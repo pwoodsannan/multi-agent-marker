@@ -1,4 +1,4 @@
 langgraph
 langchain
 python-dotenv
-pypdf
+pypdflangchain-openai
