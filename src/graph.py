@@ -108,7 +108,7 @@ def rank_node(state:MarkerStates):
 
 
 from langgraph.graph import StateGraph, START, END
-
+# building the graph for the 
 graph_builder = StateGraph(MarkerStates)
 
 graph_builder.add_node("intial",intial)
@@ -120,8 +120,8 @@ graph_builder.add_node("rank_node",rank_node)
 
 graph_builder.add_edge(START, "intial")
 graph_builder.add_edge("intial", "node_1")
-graph_builder.add_edge("intial",  "node_2")
-graph_builder.add_edge("intial",  "node_3")
+graph_builder.add_edge("intial", "node_2")
+graph_builder.add_edge("intial", "node_3")
 graph_builder.add_edge("node_1", "judge_node")
 graph_builder.add_edge("node_2", "judge_node")
 graph_builder.add_edge("node_3", "judge_node")
@@ -140,7 +140,7 @@ for entry in result["score"]:
         continue
     matrix_data[entry["judge"]] = scores
 
-df = pd.DataFrame(matrix_data).T   # .T so judges are rows, models scored are columns
+df = pd.DataFrame(matrix_data).T   # .T judges rows, models scored  columns
 print(df)
 
 print("\n--- SCOREBOARD ---")
