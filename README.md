@@ -1,4 +1,4 @@
-# Multi-Agent Marker
+# Multi-Agent Marker (WIP)
 
 A multi-agent system that tests how three LLMs assess their own and each other's work. Each agent answers the same question, then marks every answer (including its own) so you can see how the agents rank each other and whether an agent will admit another LLM answered better than it did.
 
@@ -10,6 +10,7 @@ Built with LangGraph, using free open models via OpenRouter.
 2. **Mark** — each agent then scores every answer: its own *and* the other two. Marker identities are shown, so an agent knows which answer is its own.
 3. **Rank** — the scores are aggregated to show how the agents rank each other, and where each answer lands overall.
 
+** Question**  "Can you capture and write the feeling of nostalgia in 200 words or less"
 ## What it measures
 
 - **How the agents rank each other** — the overall ordering once all marks are combined.
@@ -62,7 +63,7 @@ Current models:
 
 - Free OpenRouter models are rate-limited (roughly 50 requests/day on an unfunded account). A full run is 3 answers + 9 markings, so watch the daily cap.
 - Free models rotate out without warning — keep IDs in config, not hard-coded.
-- Exam papers are not included (copyright). Supply your own locally in `papers/`.
+
 
 
 
