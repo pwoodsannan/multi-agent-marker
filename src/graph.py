@@ -30,7 +30,7 @@ selected_models = random.sample(model_list, 3)  # pick 3 at random models from t
 print(selected_models) 
 
 def intial(state: MarkerStates):
-    problem = "Can you capture and write about the feeling of nostalgia in 200 words or less"
+    problem = "Can you capture and write the feeling of nostalgia in 200 words or less"
 
     return {"question" : problem}
 
@@ -65,7 +65,7 @@ def judge_node(state: MarkerStates):
         state["answer_3"][0]["answer"],
     ]
     print(combined_responses)
-
+    rankings = []
     for m in selected_models:
             prompt = f"Can you rank these pieces of text {combined_responses} based on the {state['question']} out of a mark of 10"
             llm = ChatOpenAI(
@@ -73,9 +73,9 @@ def judge_node(state: MarkerStates):
             base_url="https://openrouter.ai/api/v1",
             api_key=os.environ["OPENROUTER_API_KEY"],
             )
-            rankings = [] 
+            
             response = llm.invoke(prompt)      
-            rankings = rankings.append({"judge": m, "scores": response.content})
+            rankings.append({"judge": m, "scores": response.content})
 
     return {"score": rankings}
 
@@ -94,9 +94,9 @@ graph_builder.add_edge(START, "intial")
 graph_builder.add_edge("intial", "node_1")
 graph_builder.add_edge("intial",  "node_2")
 graph_builder.add_edge("intial",  "node_3")
-graph_builder.add_edge("node_1", END)
-graph_builder.add_edge("node_2", END)
-graph_builder.add_edge("node_3", END)
-
+graph_builder.add_edge("node_1", "judge_node")
+graph_builder.add_edge("node_2", "judge_node")
+graph_builder.add_edge("node_3", "judge_node")
+graph_builder.add_edge("judge_node",END)
 
 graph = graph_builder.compile()
