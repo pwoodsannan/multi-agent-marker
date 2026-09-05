@@ -28,8 +28,8 @@ Built with LangGraph, using free open models via OpenRouter.
 2. Create and activate a virtual environment:
 
    ```
-   python -m venv .venv
-   source .venv/bin/activate        # Windows: .venv\Scripts\activate
+   python -m venv venv
+   source venv/bin/activate        # Windows: .venv\Scripts\activate
    ```
 
 3. Install dependencies:
@@ -52,12 +52,7 @@ python main.py
 
 ## Configuration
 
-The three model IDs live in [ .env / config — confirm which you used ] so a dead free model is a one-line swap.
-
-Current models:
-- [ model 1 ID ]
-- [ model 2 ID ]
-- [ model 3 ID ]
+The three model IDs live in [ .env / config  ] so a dead free model is a one-line swap.
 
 ## Notes
 
